@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact • Coastal Apex Ventures</title>
+  <meta name="description" content="Contact Coastal Apex Ventures in Miami, Florida for partnerships and inquiries." />
+  <meta name="theme-color" content="#0b1220" />
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-header>
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Coastal Apex Ventures home">
+        <img src="assets/img/logo-placeholder.svg" alt="Coastal Apex Ventures logo" class="brand-mark" />
+        <span class="brand-name">Coastal Apex Ventures</span>
+      </a>
+
+      <nav class="nav" data-nav>
+        <a href="ventures.html">Ventures</a>
+        <a href="about.html">About</a>
+        <a class="active" href="contact.html">Contact</a>
+        <a class="nav-cta" href="#inquiry">Partner</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle theme" title="Toggle theme">
+          <span class="icon" aria-hidden="true">◐</span>
+        </button>
+        <button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-label="Open menu" title="Menu">
+          <span class="icon" aria-hidden="true">☰</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">Contact</p>
+        <h1>Let’s build something</h1>
+        <p class="lead">
+          For partnerships, contractors, press, or general inquiries—send a message below.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container two-col">
+        <div class="panel">
+          <h2>Headquarters</h2>
+          <p class="muted">
+            801 Brickell Ave, 8th Floor<br />
+            Miami, FL 33131
+          </p>
+
+          <div class="divider"></div>
+
+          <h3>Business hours</h3>
+          <p class="muted">By appointment.</p>
+
+          <div class="divider"></div>
+
+          <h3>Notes</h3>
+          <p class="muted">
+            This site is intentionally minimal. Each venture may have its own standalone website over time.
+          </p>
+
+          <a class="btn btn-ghost btn-sm" href="ventures.html">View ventures →</a>
+        </div>
+
+        <div class="card form-card" id="inquiry">
+          <h2>Inquiry form</h2>
+          <p class="muted">
+            This form uses <strong>mailto</strong> by default (no backend needed).
+            Your Fiverr dev can later wire it to a real form endpoint if you want.
+          </p>
+
+          <!-- Replace the email below when you're ready -->
+          <form class="form" id="contactForm">
+            <label>
+              <span>Name</span>
+              <input name="name" type="text" placeholder="Your name" required />
+            </label>
+
+            <label>
+              <span>Email</span>
+              <input name="email" type="email" placeholder="you@example.com" required />
+            </label>
+
+            <label>
+              <span>What’s this about?</span>
+              <select name="topic" required>
+                <option value="" disabled selected>Select one</option>
+                <option>Partnership</option>
+                <option>Contract / freelance</option>
+                <option>Press</option>
+                <option>General inquiry</option>
+              </select>
+            </label>
+
+            <label>
+              <span>Message</span>
+              <textarea name="message" rows="6" placeholder="Tell us what you’re working on..." required></textarea>
+            </label>
+
+            <button class="btn btn-primary" type="submit">Send message</button>
+
+            <p class="fineprint">
+              By sending this message, you agree to our <a href="terms.html">Terms</a>.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <p>© <span data-year></span> Coastal Apex Ventures.</p>
+      <p class="muted"><a href="privacy.html">Privacy</a> • <a href="terms.html">Terms</a></p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
