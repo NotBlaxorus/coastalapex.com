@@ -1,22 +1,58 @@
 (function () {
   const root = document.documentElement;
+  const THEME_STORAGE_KEY = "cav_theme";
+
+  const readStorage = (key) => {
+    try {
+      return window.localStorage.getItem(key);
+    } catch (error) {
+      return null;
+    }
+  };
+
+  const writeStorage = (key, value) => {
+    try {
+      window.localStorage.setItem(key, value);
+    } catch (error) {
+      // Ignore storage failures (private mode, browser policy, etc.)
+    }
+  };
+
+  const themeBtn = document.querySelector("[data-theme-toggle]");
+  const themeIcon = themeBtn ? themeBtn.querySelector(".icon") : null;
+
+  const syncThemeButton = (theme) => {
+    if (!themeBtn) return;
+    const isDark = theme === "dark";
+    const action = isDark ? "Switch to light theme" : "Switch to dark theme";
+    themeBtn.setAttribute("aria-pressed", String(isDark));
+    themeBtn.setAttribute("aria-label", action);
+    themeBtn.title = action;
+    if (themeIcon) {
+      themeIcon.textContent = isDark ? "◐" : "◑";
+    }
+  };
+
+  const setTheme = (theme) => {
+    root.setAttribute("data-theme", theme);
+    syncThemeButton(theme);
+  };
 
   // Persisted theme
-  const savedTheme = localStorage.getItem("cav_theme");
+  const savedTheme = readStorage(THEME_STORAGE_KEY);
   if (savedTheme === "light" || savedTheme === "dark") {
-    root.setAttribute("data-theme", savedTheme);
+    setTheme(savedTheme);
   } else {
     // default to dark (matches site mood)
-    root.setAttribute("data-theme", "dark");
+    setTheme("dark");
   }
 
   // Theme toggle
-  const themeBtn = document.querySelector("[data-theme-toggle]");
   if (themeBtn) {
     themeBtn.addEventListener("click", () => {
       const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-      root.setAttribute("data-theme", next);
-      localStorage.setItem("cav_theme", next);
+      setTheme(next);
+      writeStorage(THEME_STORAGE_KEY, next);
     });
   }
 
@@ -24,21 +60,37 @@
   const nav = document.querySelector("[data-nav]");
   const navToggle = document.querySelector("[data-nav-toggle]");
   if (nav && navToggle) {
-    navToggle.addEventListener("click", () => {
-      nav.classList.toggle("is-open");
-      const isOpen = nav.classList.contains("is-open");
+    const setNavOpen = (isOpen) => {
+      nav.classList.toggle("is-open", isOpen);
+      navToggle.setAttribute("aria-expanded", String(isOpen));
       navToggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+    };
+
+    setNavOpen(false);
+
+    navToggle.addEventListener("click", () => {
+      setNavOpen(!nav.classList.contains("is-open"));
     });
 
     // Close on link click (mobile)
     nav.querySelectorAll("a").forEach((a) => {
-      a.addEventListener("click", () => nav.classList.remove("is-open"));
+      a.addEventListener("click", () => setNavOpen(false));
     });
 
     // Close on outside click
     document.addEventListener("click", (e) => {
       const isClickInside = nav.contains(e.target) || navToggle.contains(e.target);
-      if (!isClickInside) nav.classList.remove("is-open");
+      if (!isClickInside) setNavOpen(false);
+    });
+
+    // Close on Escape
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") setNavOpen(false);
+    });
+
+    // Ensure nav is reset when switching from mobile to desktop layout
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 860) setNavOpen(false);
     });
   }
 
@@ -70,7 +122,8 @@
         cards.forEach((card) => {
           const type = card.getAttribute("data-type");
           const show = filter === "all" || type === filter;
-          card.style.display = show ? "" : "none";
+          card.hidden = !show;
+          card.setAttribute("aria-hidden", String(!show));
         });
       });
     });
