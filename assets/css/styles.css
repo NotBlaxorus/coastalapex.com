@@ -308,51 +308,170 @@ textarea:focus-visible{
   margin-top: 4px;
 }
 
+<<<<<<< ours
+.hero-card{
+  display: grid;
+  gap: 14px;
+}
+.hero-card .glass-card{
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, var(--bg-elev), rgba(255,255,255,0.02));
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+.glass-top{
+  display:flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.pill{
+  font-size: 12px;
+  color: rgba(0,0,0,0.92);
+  background: linear-gradient(135deg, var(--accent), rgba(73,197,255,0.55));
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+:root[data-theme="light"] .pill{
+  color: rgba(255,255,255,0.92);
+}
+.glass-title{
+  margin: 0 0 8px 0;
+  letter-spacing: -0.02em;
+}
+.glass-text{
+  margin: 0 0 14px 0;
+  color: var(--muted);
+}
+.glass-list{
+  display:grid;
+  gap: 10px;
+  margin: 14px 0 14px 0;
+}
+.glass-item{
+  display:flex;
+  gap: 10px;
+  align-items:center;
+  color: var(--muted);
+}
+.dot{
+  width: 10px; height: 10px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, var(--accent), rgba(73,197,255,0.2));
+  box-shadow: 0 10px 25px rgba(73,197,255,0.18);
+}
+
+.inline-link{
+  display:inline-flex;
+  gap: 8px;
+  color: var(--text);
+  font-weight: 700;
+}
+.inline-link:hover{ opacity: .92; }
+
 .hero-image-pair{
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
+=======
+.hero-card .glass-card{
+>>>>>>> theirs
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow);
   background: linear-gradient(180deg, var(--bg-elev), rgba(255,255,255,0.02));
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  box-shadow: var(--shadow);
 }
-.hero-image-pair::after{
+.glass-top{
+  display:flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+<<<<<<< ours
+.hero-image-pair::before{
   content: "";
   position: absolute;
-  top: 18px;
-  bottom: 18px;
   left: 50%;
-  width: 1px;
-  background: linear-gradient(to bottom, transparent, var(--border), transparent);
-  transform: translateX(-0.5px);
+  top: 8%;
+  bottom: 8%;
+  width: 28px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at center, rgba(73,197,255,0.12), transparent 70%);
   pointer-events: none;
-  z-index: 2;
+  z-index: 1;
 }
 .hero-image-frame{
   margin: 0;
   min-height: 430px;
+  position: relative;
+  z-index: 0;
+=======
+.pill{
+  font-size: 12px;
+  color: rgba(0,0,0,0.92);
+  background: linear-gradient(135deg, var(--accent), rgba(73,197,255,0.55));
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+>>>>>>> theirs
 }
-.hero-image-frame img{
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  object-position: center;
-  transition: transform .28s ease;
+:root[data-theme="light"] .pill{
+  color: rgba(255,255,255,0.92);
 }
+<<<<<<< ours
 .hero-image-left img{ object-position: left center; }
 .hero-image-right img{ object-position: right center; }
+.hero-image-left{ margin-right: -8px; }
+.hero-image-right{
+  margin-left: -8px;
+  z-index: 1;
+}
 .hero-image-pair:hover .hero-image-frame img{
   transform: scale(1.03);
+=======
+.glass-title{
+  margin: 0 0 8px 0;
+  letter-spacing: -0.02em;
+>>>>>>> theirs
 }
-@media (max-width: 980px){
-  .hero-image-frame{ min-height: 360px; }
+.glass-text{
+  margin: 0 0 14px 0;
+  color: var(--muted);
 }
+.glass-list{
+  display:grid;
+  gap: 10px;
+  margin: 14px 0 14px 0;
+}
+<<<<<<< ours
 @media (max-width: 620px){
+  .hero-card{ gap: 12px; }
+  .hero-image-left,
+  .hero-image-right{ margin: 0; }
   .hero-image-frame{ min-height: 250px; }
+=======
+.glass-item{
+  display:flex;
+  gap: 10px;
+  align-items:center;
+  color: var(--muted);
 }
+.dot{
+  width: 10px; height: 10px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, var(--accent), rgba(73,197,255,0.2));
+  box-shadow: 0 10px 25px rgba(73,197,255,0.18);
+}
+
+.inline-link{
+  display:inline-flex;
+  gap: 8px;
+  color: var(--text);
+  font-weight: 700;
+>>>>>>> theirs
+}
+.inline-link:hover{ opacity: .92; }
 
 .hero-bg{
   position:absolute; inset: 0;
